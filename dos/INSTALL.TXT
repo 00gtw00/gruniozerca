@@ -1,0 +1,165 @@
+GRUNIOZERCA DOS PORT — INSTALLATION INSTRUCTIONS
+=================================================
+Requires: DOS 6.22, FreeDOS, or DOSBox-X
+Hardware: 486 DX2/66 or faster, 4 MB RAM, VGA card
+
+-------------------------------------------------
+MINIMUM REQUIREMENTS
+-------------------------------------------------
+  CPU   : 486 DX2 66 MHz or faster
+  RAM   : 4 MB conventional + extended
+  VIDEO : VGA (320x200 256-color mode 13h)
+  DOS   : MS-DOS 5.0+, PC-DOS 6.x, FreeDOS 1.3
+  HDD   : 1 MB free disk space
+
+RECOMMENDED:
+  CPU   : Pentium 90 MHz or faster
+  SOUND : Sound Blaster 16 (or compatible)
+           AdLib / OPL2 card
+
+-------------------------------------------------
+INSTALLATION
+-------------------------------------------------
+1. Create a directory for the game:
+     MD C:\GAMES\GRUNIO
+     CD C:\GAMES\GRUNIO
+
+2. Copy the required files:
+     COPY A:\GRUNIO\GRUNIO.EXE  C:\GAMES\GRUNIO\
+     COPY A:\GRUNIO\GRUNIO.DAT  C:\GAMES\GRUNIO\
+
+   Required files:
+     GRUNIO.EXE  — main game executable
+     GRUNIO.DAT  — packed game data (graphics, music)
+     CWSDPMI.EXE — DPMI host (included, must be in
+                   the same directory as GRUNIO.EXE)
+
+3. Start the game:
+     GRUNIO.EXE
+
+   Sound and controls can be configured from the
+   in-game SETTINGS menu (arrow keys + ENTER).
+
+-------------------------------------------------
+CONFIGURATION (IN-GAME SETTINGS)
+-------------------------------------------------
+From the main menu select USTAWIENIA (Settings).
+Use arrow keys to navigate, ENTER to confirm.
+
+  [F1] Input  — remap keyboard and joystick
+  [F2] Sound  — card type and volume
+
+Sound card detection:
+  The game reads the BLASTER environment variable
+  automatically if present in your AUTOEXEC.BAT.
+  Example AUTOEXEC.BAT entry:
+    SET BLASTER=A220 I5 D1 H5 T6
+
+  If BLASTER is not set, use F2 in Settings to
+  select your card manually.
+
+Settings are saved to GRUNIO.CFG automatically
+when you leave the Settings screen.
+
+-------------------------------------------------
+AUTOEXEC.BAT / CONFIG.SYS RECOMMENDATIONS
+-------------------------------------------------
+Add to CONFIG.SYS:
+  FILES=20
+  BUFFERS=10
+  DEVICE=C:\DOS\HIMEM.SYS
+  DEVICE=C:\DOS\EMM386.EXE NOEMS
+  DOS=HIGH,UMB
+
+Add to AUTOEXEC.BAT (adjust for your SB card):
+  SET BLASTER=A220 I5 D1 H5 T6
+
+For DPMI (required by the game's 32-bit code):
+  The game includes CWSDPMI.EXE which loads
+  automatically. No manual action needed.
+
+-------------------------------------------------
+FREEDOS NOTES
+-------------------------------------------------
+FreeDOS is fully supported. Ensure JEMMEX or
+HIMEM+EMM386 are loaded in FDCONFIG.SYS.
+
+CWSDPMI is bundled; no separate DPMI host needed.
+
+-------------------------------------------------
+DOSBOX-X (TESTING / MODERN PC)
+-------------------------------------------------
+DOSBox-X is the recommended emulator for testing
+this game on modern hardware.
+
+Suggested dosbox-x.conf settings:
+  [cpu]
+  cputype=486
+  cycles=fixed 50000
+
+  [sblaster]
+  sbtype=sb16
+  sbbase=220
+  irq=5
+  dma=1
+
+  [dos]
+  ver=6.22
+
+Mount the game directory and run:
+  MOUNT C C:\GAMES\GRUNIO
+  C:
+  GRUNIO.EXE
+
+-------------------------------------------------
+TROUBLESHOOTING
+-------------------------------------------------
+Problem : Screen flickers or is garbled
+Solution: Ensure you have a true VGA card (not EGA).
+          Try running without any TSR programs.
+
+Problem : No sound / wrong sound
+Solution: Open in-game Settings (USTAWIENIA) and
+          select the correct sound card under F2.
+          Check the BLASTER environment variable.
+          Verify IRQ/DMA settings match your card.
+
+Problem : Game runs too fast / too slow
+Solution: The game targets 60 FPS on a 486/66.
+          On faster CPUs use DOSBox-X cycle limit.
+          On slower CPUs enable PC Speaker mode.
+
+Problem : "DPMI not found" error
+Solution: CWSDPMI.EXE must be in the same directory
+          as GRUNIO.EXE, or on the PATH.
+
+Problem : "Cannot open GRUNIO.DAT"
+Solution: Run the game from its installation
+          directory (C:\GAMES\GRUNIO), not from
+          another directory. GRUNIO.DAT must be in
+          the same directory as GRUNIO.EXE.
+
+-------------------------------------------------
+UNINSTALLATION
+-------------------------------------------------
+Delete the game directory:
+  DELTREE C:\GAMES\GRUNIO
+
+The game writes only two files, both in its own
+directory:
+  GRUNIO.CFG  — saved settings
+  GRUNIO.SAV  — high score record
+Both are removed when you delete the directory.
+
+-------------------------------------------------
+LICENSE
+-------------------------------------------------
+Original NES game (c) dizzy9, Ryszard Brzukala
+— Public Domain.
+Music by Ozzed — CC BY-SA 3.0 (ozzed.net).
+DOS port (c) 2026 Sebastian Izycki — free for
+personal use.
+
+=================================================
+END OF INSTALL.TXT
+=================================================

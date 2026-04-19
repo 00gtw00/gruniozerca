@@ -1,0 +1,31 @@
+# Artefakty kompilacji
+dos/build/*.o
+dos/build/*.map
+
+# Narzędzia hosta (skompilowane natywnie — platform-specific)
+dos/tools/chr2vga
+dos/tools/chr2vga.exe
+dos/tools/mus2opl
+dos/tools/mus2opl.exe
+dos/tools/mkpack
+dos/tools/mkpack.exe
+
+# Dane sesji Claude Code
+.claude/
+
+# Pliki użytkownika (zapis gry, konfiguracja)
+dos/GRUNIO.SAV
+dos/GRUNIO.CFG
+dos/build/GRUNIO.SAV
+dos/build/GRUNIO.CFG
+
+# Stare kopie assetów
+dos/assets/*.pcx_old
+dos/assets/*.dat_old
+
+# Pliki Windows
+Thumbs.db
+desktop.ini
+
+# Zewnętrzne narzędzia (nie nasze)
+dos/tools/ADT2play.exe

@@ -1,0 +1,174 @@
+GRUNIOŻERCA — PORT DOS
+=====================================================
+DOS 6.22 / FreeDOS / DOSBox-X
+Sprzęt: 486 DX2/66 lub szybszy, 4 MB RAM, karta VGA
+
+=====================================================
+O GRZE
+=====================================================
+Gruniożerca to gra zręcznościowa, w której sterujesz
+świnką Gruniem łapiącym kolorowe marchewki.
+
+Złap marchewkę tego samego koloru co Grunio — to daje
+punkty. Zły kolor albo marchewka na ziemi — tracisz
+życie. Masz 6 żyć. Zmieniaj kolor w locie!
+
+Ta wersja to port oryginalnej gry NES autorstwa
+dizzy9 i Ryszarda Brzukały (PD).
+Muzyka: Ozzed (CC BY-SA 3.0).
+
+=====================================================
+INSTALACJA
+=====================================================
+Skopiuj do jednego katalogu:
+  GRUNIO.EXE   — plik wykonywalny gry
+  GRUNIO.DAT   — dane gry (grafika, muzyka)
+  CWSDPMI.EXE  — obsługa DPMI (wymagana)
+
+Uruchom:
+  GRUNIO.EXE
+
+Przy pierwszym uruchomieniu pokazuje się ekran
+z instrukcją jak grać.
+
+=====================================================
+STEROWANIE — KLAWIATURA (domyślne)
+=====================================================
+  Strzałka w lewo  — ruch w lewo
+  Strzałka w prawo — ruch w prawo
+  SPACJA           — zmiana koloru Grunia
+  ENTER            — start / pauza
+  ESC              — wyjście do menu
+
+Sterowanie można zmienić w menu USTAWIENIA (F1).
+
+=====================================================
+STEROWANIE — JOYSTICK (gameport)
+=====================================================
+  Joystick lewo/prawo — ruch
+  Przycisk 1          — zmiana koloru
+  Przycisk 2          — start / pauza
+
+Joystick wymaga kalibracji w menu USTAWIENIA.
+Podłącz joystick zanim uruchomisz grę.
+
+=====================================================
+ZASADY GRY
+=====================================================
+  - Marchewki spadają z góry ekranu
+  - Złap marchewkę tego samego koloru co Grunio
+  - Za każdą złapaną marchewkę dostajesz punkty
+  - Combo: łap kolejne bez przerwy — punkty rosną!
+    (11 → 15 → 21 → 22 → 25 → 31 → 32 → 35 pkt)
+  - Tracisz życie gdy:
+      marchewka dotknie ziemi (pudło)
+      złapiesz marchewkę złego koloru
+  - Gra kończy się po utracie wszystkich żyć (6)
+  - Rekord jest zapisywany automatycznie
+
+=====================================================
+KARTY DŹWIĘKOWE
+=====================================================
+Gruniożerca obsługuje kilka kart dźwiękowych:
+
+SOUND BLASTER / SB PRO / SB16
+  Najlepsza jakość dźwięku.
+  Konfiguracja przez zmienną środowiskową BLASTER:
+    SET BLASTER=A220 I5 D1 H5 T6
+  (A=adres portu, I=IRQ, D=DMA)
+
+ADLIB / OPL2 / OPL3
+  Synthesizer FM (układ Yamaha YM3812).
+  Muzyka i efekty jako sekwencja rejestrów OPL.
+  Port standardowy: $388/$389.
+
+PC SPEAKER
+  Tryb awaryjny — zawsze dostępny.
+  Uproszczona melodia monofoniczna.
+  Nie wymaga żadnej karty dźwiękowej.
+
+Wybór karty: menu USTAWIENIA → [F2] Dźwięk.
+Wykrywanie automatyczne na podstawie BLASTER.
+
+=====================================================
+PLIK KONFIGURACYJNY
+=====================================================
+GRUNIO.CFG — tworzony automatycznie przy wyjściu
+z ekranu USTAWIENIA. Format INI.
+
+Przykładowa zawartość:
+  [input]
+  key_left=75
+  key_right=77
+  key_action=57
+  key_start=28
+  joystick=0
+
+  [sound]
+  card=OPL2
+  port=0x388
+  vol_music=80
+  vol_sfx=70
+
+  [video]
+  show_fps=0
+
+=====================================================
+REKORDY
+=====================================================
+Rekord jest zapisywany w pliku GRUNIO.SAV
+w katalogu gry (4 bajty, uint32).
+Usuń GRUNIO.SAV żeby zresetować rekord.
+
+=====================================================
+WYMAGANIA SYSTEMOWE
+=====================================================
+Minimalne:
+  Procesor : 486 DX2 66 MHz
+  Pamięć   : 4 MB RAM
+  Grafika  : karta VGA
+  Dysk     : 1 MB wolnego miejsca
+  System   : DOS 5.0+, FreeDOS 1.3
+
+Zalecane:
+  Procesor : Pentium 90 MHz lub szybszy
+  Dźwięk   : Sound Blaster 16 lub kompatybilny
+
+=====================================================
+ZNANE PROBLEMY
+=====================================================
+- Na bardzo szybkich procesorach (Pentium III+)
+  gra może działać zbyt szybko. Zalecane DOSBox-X
+  z ustawieniem cycles=50000.
+
+- Joystick wymaga portu gameport 15-pin (DB-15).
+  Kontrolery USB nie są obsługiwane.
+
+- Na FreeDOS upewnij się, że JEMMEX lub
+  HIMEM+EMM386 są załadowane w FDCONFIG.SYS.
+
+=====================================================
+KONTAKT / ŹRÓDŁA
+=====================================================
+Strona projektu:
+  https://ar.hn/gruniozerca/
+
+Oryginalna gra NES:
+  https://github.com/arhneu/gruniozerca
+  Autorzy: dizzy9, Ryszard Brzukała
+  Licencja: Public Domain
+
+Muzyka: Ozzed
+  https://ozzed.net  |  CC BY-SA 3.0
+
+Port DOS: Sebastian Izycki, 2026
+  sebastian@izycki.pl
+
+=====================================================
+INSTRUKCJA INSTALACJI (angielski)
+=====================================================
+Patrz: INSTALL.TXT
+
+=====================================================
+KONIEC PLIKU CZYTAJ.TXT
+=====================================================
